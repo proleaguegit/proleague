@@ -1,51 +1,81 @@
-
 body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    background: radial-gradient(circle at top, #0a0a23, #000);
-    color: white;
+  background: linear-gradient(135deg, #0a093b, #1a164d);
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  scroll-behavior: smooth;
+  animation: fadeIn 1.5s ease-in-out;
 }
-header {
-    text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(to right, #091a3a, #1a1a40);
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.logo {
-    width: 120px;
+
+h1 {
+  color: #00c6ff;
+  font-size: 2.5em;
+  animation: pulse 2.5s infinite ease-in-out;
 }
-nav a {
-    margin: 0 15px;
-    color: #1da1f2;
-    text-decoration: none;
-    font-weight: bold;
+
+@keyframes pulse {
+  0%, 100% { color: #00c6ff; text-shadow: 0 0 10px #00c6ff; }
+  50% { color: #ffffff; text-shadow: 0 0 20px #00c6ff; }
 }
-main {
-    padding: 30px;
-}
-h2 {
-    color: #00bfff;
-}
+
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #444;
+  animation: fadeIn 2s ease-in-out;
 }
-table, th, td {
-    border: 1px solid #00bfff;
-    padding: 10px;
-    text-align: center;
+
+th, td {
+  padding: 10px;
+  border: 1px solid #333;
+  text-align: center;
+  transition: background 0.3s ease;
 }
-.telegram-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #1da1f2;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+
+th {
+  background-color: #1f1a50;
+  color: #00c6ff;
 }
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #111;
-    margin-top: 50px;
+
+tr:hover td {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+td[contenteditable="true"] {
+  background-color: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+.save-btn {
+  margin-top: 20px;
+  background: #00c6ff;
+  border: none;
+  color: #000;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.save-btn:hover {
+  background: #00a6cc;
+  transform: scale(1.05);
+}
+
+.section-title {
+  margin-top: 50px;
+  font-size: 1.8em;
+  color: #ffcc00;
+  animation: fadeIn 1.5s ease;
 }
