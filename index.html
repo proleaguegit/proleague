@@ -1,44 +1,67 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>ProLeague eFootball Championship 2025</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Pro League — eFootball</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="ProLeague Logo" class="logo">
-        <h1>ProLeague eFootball Championship 2025</h1>
-        <nav>
-            <a href="#tournaments">Турниры</a>
-            <a href="#schedule">Расписание</a>
-            <a href="#contact">Telegram</a>
-        </nav>
-    </header>
-    <main>
-        <section id="tournaments">
-            <h2>Турниры</h2>
-            <ul>
-                <li>ProLeague Season 3 — Август 2025</li>
-     
-            </ul>
-        </section>
-        <section id="schedule">
-            <h2>Расписание матчей</h2>
-            <table>
-                <tr><th>Дата</th><th>Матч</th><th>Время</th></tr>
-                <tr><td>20.08.2025</td><td>Player A vs Player B</td><td>18:00</td></tr>
-                <tr><td>21.08.2025</td><td>Player C vs Player D</td><td>20:00</td></tr>
-            </table>
-        </section>
-        <section id="contact">
-            <h2>Контакты</h2>
-            <a href="#" class="telegram-button">Скоро будет ссылка на Telegram</a>
-        </section>
-    </main>
-    <footer>
-        © 2025 ProLeague eFootball
-    </footer>
+  <h1>Чемпионат eFootball</h1>
+  <h2>Стиль Лиги Чемпионов ⚽</h2>
+
+  <table id="leagueTable">
+    <thead>
+      <tr>
+        <th>Команда</th>
+        <th>И</th>
+        <th>В</th>
+        <th>Н</th>
+        <th>П</th>
+        <th>О</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td contenteditable="true">Барселона</td>
+        <td contenteditable="true">3</td>
+        <td contenteditable="true">2</td>
+        <td contenteditable="true">1</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">7</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">Реал</td>
+        <td contenteditable="true">3</td>
+        <td contenteditable="true">2</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">1</td>
+        <td contenteditable="true">6</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">ПСЖ</td>
+        <td contenteditable="true">3</td>
+        <td contenteditable="true">1</td>
+        <td contenteditable="true">1</td>
+        <td contenteditable="true">1</td>
+        <td contenteditable="true">4</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">МЮ</td>
+        <td contenteditable="true">3</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">0</td>
+        <td contenteditable="true">3</td>
+        <td contenteditable="true">0</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="save-btn" onclick="saveTable()">💾 Сохранить таблицу</button>
+
+  <div class="section-title">🏆 Бомбардиры турнира</div>
+  <div id="scorers"></div>
+  <button class="save-btn" onclick="saveScorers()">💾 Сохранить бомбардиров</button>
+
+  <script src="script.js"></script>
 </body>
 </html>
