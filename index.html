@@ -4,31 +4,100 @@
   <meta charset="UTF-8">
   <title>Pro League — eFootball</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    button {
+      margin: 4px;
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .section-title {
+      font-size: 20px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
   <h1>Чемпионат eFootball</h1>
   <h2>Стиль Лиги Чемпионов ⚽</h2>
 
-  <table id="leagueTable">
-    <thead>
-      <tr>
-        <th>Команда</th>
-        <th>И</th>
-        <th>В</th>
-        <th>Н</th>
-        <th>П</th>
-        <th>О</th>
-      </tr>
-    </thead>
-    <tbody id="table-body">
-      <!-- Данные из Firebase появятся здесь -->
-    </tbody>
-  </table>
+  <!-- 🔽 Меню -->
+  <div id="menu">
+    <button onclick="showSection('tableSection')">📊 Таблица</button>
+    <button onclick="showSection('scorersSection')">🎯 Бомбардиры</button>
+    <button onclick="showSection('matchesSection')">⚽ Матчи</button>
+    <button onclick="showSection('resultsSection')">📅 Результаты</button>
+    <button onclick="showSection('nextSection')">🔜 Следующий тур</button>
+  </div>
 
-  <div class="section-title">🏆 Бомбардиры турнира</div>
-  <div id="scorers">Загрузка...</div>
+  <!-- 🔽 Таблица -->
+  <div id="tableSection">
+    <table id="leagueTable">
+      <thead>
+        <tr>
+          <th>Команда</th>
+          <th>И</th>
+          <th>В</th>
+          <th>Н</th>
+          <th>П</th>
+          <th>О</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!-- Firebase standings -->
+      </tbody>
+    </table>
+  </div>
 
-  <!-- Firebase SDK -->
+  <!-- 🔽 Бомбардиры -->
+  <div id="scorersSection" style="display: none;">
+    <div class="section-title">🎯 Бомбардиры турнира</div>
+    <div id="scorers">Загрузка...</div>
+  </div>
+
+  <!-- 🔽 Матчи -->
+  <div id="matchesSection" style="display: none;">
+    <div class="section-title">⚽ Матчи</div>
+    <div id="matches">Здесь будут отображены все матчи</div>
+  </div>
+
+  <!-- 🔽 Результаты -->
+  <div id="resultsSection" style="display: none;">
+    <div class="section-title">📅 Результаты туров</div>
+    <div id="results">Здесь появятся результаты</div>
+  </div>
+
+  <!-- 🔽 Следующий тур -->
+  <div id="nextSection" style="display: none;">
+    <div class="section-title">🔜 Следующий тур</div>
+    <div id="next-matches">Информация скоро будет добавлена</div>
+  </div>
+
+  <!-- 🔽 Скрипт переключения вкладок -->
+  <script>
+    function showSection(id) {
+      const sections = [
+        'tableSection',
+        'scorersSection',
+        'matchesSection',
+        'resultsSection',
+        'nextSection'
+      ];
+      sections.forEach(sec => {
+        document.getElementById(sec).style.display = (sec === id) ? 'block' : 'none';
+      });
+    }
+  </script>
+
+  <!-- 🔽 Firebase SDK -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
     import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
@@ -46,7 +115,7 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    // Таблица лиги
+    // Таблица
     onSnapshot(collection(db, "standings"), (snapshot) => {
       let html = "";
       snapshot.forEach((doc) => {
