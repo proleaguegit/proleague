@@ -20,48 +20,47 @@
         <th>О</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td contenteditable="true">Барселона</td>
-        <td contenteditable="true">3</td>
-        <td contenteditable="true">2</td>
-        <td contenteditable="true">1</td>
-        <td contenteditable="true">0</td>
-        <td contenteditable="true">7</td>
-      </tr>
-      <tr>
-        <td contenteditable="true">Реал</td>
-        <td contenteditable="true">3</td>
-        <td contenteditable="true">2</td>
-        <td contenteditable="true">0</td>
-        <td contenteditable="true">1</td>
-        <td contenteditable="true">6</td>
-      </tr>
-      <tr>
-        <td contenteditable="true">ПСЖ</td>
-        <td contenteditable="true">3</td>
-        <td contenteditable="true">1</td>
-        <td contenteditable="true">1</td>
-        <td contenteditable="true">1</td>
-        <td contenteditable="true">4</td>
-      </tr>
-      <tr>
-        <td contenteditable="true">МЮ</td>
-        <td contenteditable="true">3</td>
-        <td contenteditable="true">0</td>
-        <td contenteditable="true">0</td>
-        <td contenteditable="true">3</td>
-        <td contenteditable="true">0</td>
-      </tr>
+    <tbody id="table-body">
+      <!-- Данные из Firebase появятся здесь -->
     </tbody>
   </table>
 
-  <button class="save-btn" onclick="saveTable()">💾 Сохранить таблицу</button>
-
   <div class="section-title">🏆 Бомбардиры турнира</div>
   <div id="scorers"></div>
-  <button class="save-btn" onclick="saveScorers()">💾 Сохранить бомбардиров</button>
 
-  <script src="script.js"></script>
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBpxtwEEGRP1L51p_DdXGLT_laChlHnvqk",
+      authDomain: "proleague-1e1cb.firebaseapp.com",
+      projectId: "proleague-1e1cb",
+      storageBucket: "proleague-1e1cb.firebasestorage.app",
+      messagingSenderId: "342867924731",
+      appId: "1:342867924731:web:a16d4a0da5d8c5cb25425e",
+      measurementId: "G-QH5Z4CBK9S"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    onSnapshot(collection(db, "standings"), (snapshot) => {
+      let html = "";
+      snapshot.forEach((doc) => {
+        const team = doc.data();
+        html += `<tr>
+          <td>${team.name}</td>
+          <td>${team.played}</td>
+          <td>${team.wins}</td>
+          <td>${team.draws}</td>
+          <td>${team.losses}</td>
+          <td>${team.points}</td>
+        </tr>`;
+      });
+      document.getElementById("table-body").innerHTML = html;
+    });
+  </script>
 </body>
 </html>
