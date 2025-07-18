@@ -1,81 +1,94 @@
+/* Шрифты и фон */
 body {
-  background: linear-gradient(135deg, #0a093b, #1a164d);
-  color: #fff;
-  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  padding: 20px;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: white;
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 0 10px #00eaff;
+}
+
+.logo {
+  font-size: 28px;
+  color: #00eaff;
+  animation: glow 1.5s infinite alternate;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #ddd;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00eaff;
+}
+
+h1.glow-text {
   text-align: center;
-  scroll-behavior: smooth;
-  animation: fadeIn 1.5s ease-in-out;
+  font-size: 36px;
+  margin: 30px 0;
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-h1 {
-  color: #00c6ff;
-  font-size: 2.5em;
-  animation: pulse 2.5s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0%, 100% { color: #00c6ff; text-shadow: 0 0 10px #00c6ff; }
-  50% { color: #ffffff; text-shadow: 0 0 20px #00c6ff; }
+.table-wrapper {
+  max-width: 1000px;
+  margin: auto;
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.2);
 }
 
 table {
-  width: 90%;
-  max-width: 900px;
-  margin: 0 auto;
+  width: 100%;
   border-collapse: collapse;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid #444;
-  animation: fadeIn 2s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #00eaff;
+  color: #000;
 }
 
 th, td {
-  padding: 10px;
-  border: 1px solid #333;
+  padding: 14px 20px;
   text-align: center;
+}
+
+tbody tr {
   transition: background 0.3s ease;
 }
 
-th {
-  background-color: #1f1a50;
-  color: #00c6ff;
+tbody tr:hover {
+  background: rgba(0, 255, 255, 0.1);
 }
 
-tr:hover td {
-  background-color: rgba(255, 255, 255, 0.08);
-}
-
-td[contenteditable="true"] {
-  background-color: rgba(255, 255, 255, 0.1);
-  outline: none;
-}
-
-.save-btn {
-  margin-top: 20px;
-  background: #00c6ff;
-  border: none;
-  color: #000;
-  padding: 10px 20px;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.save-btn:hover {
-  background: #00a6cc;
-  transform: scale(1.05);
-}
-
-.section-title {
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #000;
+  color: #666;
+  font-size: 14px;
   margin-top: 50px;
-  font-size: 1.8em;
-  color: #ffcc00;
-  animation: fadeIn 1.5s ease;
+}
+
+/* Анимации */
+@keyframes glow {
+  from { text-shadow: 0 0 5px #00eaff; }
+  to { text-shadow: 0 0 20px #00eaff, 0 0 30px #00eaff; }
 }
