@@ -103,41 +103,8 @@ tbody tr:hover {
   background: rgba(0, 255, 255, 0.1);
 }
 
-/* 👑 Легенды футбола (Месси и Роналду) */
-footer {
-  background: #0a0a23;
-  padding: 40px 20px;
-  text-align: center;
-  color: #fff;
-  box-shadow: 0 0 10px #00eaff;
-  margin-top: 50px;
-}
 
-footer h3 {
-  font-size: 24px;
-  color: #00eaff;
-  text-shadow: 0 0 10px #00eaff;
-}
 
-.legend-images {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 1.5rem;
-}
-
-.legend-images img {
-  width: 120px;
-  height: auto;
-  border-radius: 10px;
-  border: 2px solid #00eaff;
-  box-shadow: 0 0 15px #00eaff;
-  transition: transform 0.3s;
-}
-
-.legend-images img:hover {
-  transform: scale(1.05);
-}
 
 /* 🌟 Анимации */
 @keyframes glow {
