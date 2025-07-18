@@ -2,184 +2,52 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Pro League — eFootball</title>
+  <title>Чемпионат eFootball</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      background: linear-gradient(#001f4d, #000);
-      color: white;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    h1 {
-      text-align: center;
-      padding: 1rem;
-      background-color: #002b5c;
-      margin: 0;
-    }
-    .top-nav {
-      display: flex;
-      justify-content: space-around;
-      background-color: #001a3d;
-      padding: 1rem 0;
-    }
-    .top-nav button {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .top-nav button:hover {
-      color: #00bfff;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-    th, td {
-      padding: 8px;
-      border: 1px solid #ffffff44;
-      text-align: center;
-    }
-    .section-title {
-      font-size: 20px;
-      margin-top: 20px;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-    footer {
-      background-color: #001a3d;
-      padding: 2rem;
-      text-align: center;
-    }
-    .legend-images {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 1rem;
-    }
-    .legend-images img {
-      width: 120px;
-      height: auto;
-      border-radius: 10px;
-      border: 2px solid white;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Чемпионат eFootball</h1>
 
-  <!-- 🔽 Навигация -->
-  <div class="top-nav">
-    <button onclick="showSection('tableSection')">📊 Таблица</button>
-    <button onclick="showSection('matchesSection')">⚽ Матчи</button>
-    <button onclick="showSection('scorersSection')">🎯 Бомбардиры</button>
-    <button onclick="showSection('newsSection')">📰 Новости</button>
+<header>
+  <div class="logo">Чемпионат eFootball</div>
+  <nav>
+    <a href="#">📊 Таблица</a>
+    <a href="#">⚽ Матчи</a>
+    <a href="#">🎯 Бомбардиры</a>
+    <a href="#">📰 Новости</a>
+  </nav>
+</header>
+
+<h1 class="glow-text">Добро пожаловать в eFootball Pro League</h1>
+
+<section class="cards">
+  <div class="card match-card">
+    <h3>Барселона 2–1 Реал</h3>
+    <p>Дата: 14 июля 2025</p>
   </div>
 
-  <!-- 🔽 Таблица -->
-  <div id="tableSection">
-    <table id="leagueTable">
-      <thead>
-        <tr>
-          <th>Команда</th>
-          <th>И</th>
-          <th>В</th>
-          <th>Н</th>
-          <th>П</th>
-          <th>О</th>
-        </tr>
-      </thead>
-      <tbody id="table-body">
-        <!-- Firebase standings -->
-      </tbody>
-    </table>
+  <div class="card match-card">
+    <h3>МЮ 3–3 Бавария</h3>
+    <p>Дата: 15 июля 2025</p>
+  </div>
+</section>
+
+<section class="cards">
+  <div class="card news-card">
+    <h3>Трансферный рынок открыт!</h3>
+    <p>Обзор самых громких переходов в лиге.</p>
   </div>
 
-  <!-- 🔽 Матчи -->
-  <div id="matchesSection" style="display: none;">
-    <div class="section-title">⚽ Матчи</div>
-    <div id="matches">Здесь будут отображены все матчи</div>
+  <div class="card news-card">
+    <h3>Игрок тура: Homidov10</h3>
+    <p>Феноменальная игра и хет-трик!</p>
   </div>
+</section>
 
-  <!-- 🔽 Бомбардиры -->
-  <div id="scorersSection" style="display: none;">
-    <div class="section-title">🎯 Бомбардиры турнира</div>
-    <div id="scorers">Загрузка...</div>
-  </div>
-
-  <!-- 🔽 Новости -->
-  <div id="newsSection" style="display: none;">
-    <div class="section-title">📰 Новости</div>
-    <div id="news">Здесь будут появляться свежие новости</div>
-  </div>
-
-  <!-- 🔽 Скрипт переключения вкладок -->
-  <script>
-    function showSection(id) {
-      const sections = [
-        'tableSection',
-        'matchesSection',
-        'scorersSection',
-        'newsSection'
-      ];
-      sections.forEach(sec => {
-        document.getElementById(sec).style.display = (sec === id) ? 'block' : 'none';
-      });
-    }
-  </script>
-
-  <!-- 🔽 Firebase SDK -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-    import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyBpxtwEEGRP1L51p_DdXGLT_laChlHnvqk",
-      authDomain: "proleague-1e1cb.firebaseapp.com",
-      projectId: "proleague-1e1cb",
-      storageBucket: "proleague-1e1cb.firebasestorage.app",
-      messagingSenderId: "342867924731",
-      appId: "1:342867924731:web:a16d4a0da5d8c5cb25425e",
-      measurementId: "G-QH5Z4CBK9S"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    // Таблица
-    onSnapshot(collection(db, "standings"), (snapshot) => {
-      let html = "";
-      snapshot.forEach((doc) => {
-        const team = doc.data();
-        html += `<tr>
-          <td>${team.name}</td>
-          <td>${team.played}</td>
-          <td>${team.wins}</td>
-          <td>${team.draws}</td>
-          <td>${team.losses}</td>
-          <td>${team.points}</td>
-        </tr>`;
-      });
-      document.getElementById("table-body").innerHTML = html;
-    });
-
-    // Бомбардиры
-    onSnapshot(collection(db, "scorers"), (snapshot) => {
-      let html = "<ul>";
-      snapshot.forEach((doc) => {
-        const p = doc.data();
-        html += `<li><b>${p.name}</b> (${p.team}) — ⚽ ${p.goals} гол(ов)</li>`;
-      });
-      html += "</ul>";
-      document.getElementById("scorers").innerHTML = html;
-    });
-  </script>
-
+<footer>
+  <p>© 2025 eFootball Pro League. Создано Хомидовом</p>
+</footer>
 
 </body>
 </html>
+
