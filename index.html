@@ -5,36 +5,80 @@
   <title>Pro League — eFootball</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    button {
-      margin: 4px;
-      padding: 8px 16px;
-      font-weight: bold;
-      border-radius: 6px;
-      border: none;
-      background-color: #007bff;
+    body {
+      background: linear-gradient(#001f4d, #000);
       color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      padding: 1rem;
+      background-color: #002b5c;
+      margin: 0;
+    }
+    .top-nav {
+      display: flex;
+      justify-content: space-around;
+      background-color: #001a3d;
+      padding: 1rem 0;
+    }
+    .top-nav button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #0056b3;
+    .top-nav button:hover {
+      color: #00bfff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #ffffff44;
+      text-align: center;
     }
     .section-title {
       font-size: 20px;
       margin-top: 20px;
       margin-bottom: 10px;
+      text-align: center;
+    }
+    footer {
+      background-color: #001a3d;
+      padding: 2rem;
+      text-align: center;
+    }
+    .legend-images {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .legend-images img {
+      width: 120px;
+      height: auto;
+      border-radius: 10px;
+      border: 2px solid white;
     }
   </style>
 </head>
 <body>
   <h1>Чемпионат eFootball</h1>
 
-  <!-- 🔽 Меню -->
-  <div id="menu">
+  <!-- 🔽 Навигация -->
+  <div class="top-nav">
     <button onclick="showSection('tableSection')">📊 Таблица</button>
-    <button onclick="showSection('scorersSection')">🎯 Бомбардиры</button>
     <button onclick="showSection('matchesSection')">⚽ Матчи</button>
-    <button onclick="showSection('resultsSection')">📅 Результаты</button>
-    <button onclick="showSection('nextSection')">🔜 Следующий тур</button>
+    <button onclick="showSection('scorersSection')">🎯 Бомбардиры</button>
+    <button onclick="showSection('newsSection')">📰 Новости</button>
   </div>
 
   <!-- 🔽 Таблица -->
@@ -56,28 +100,22 @@
     </table>
   </div>
 
-  <!-- 🔽 Бомбардиры -->
-  <div id="scorersSection" style="display: none;">
-    <div class="section-title">🎯 Бомбардиры турнира</div>
-    <div id="scorers">Загрузка...</div>
-  </div>
-
   <!-- 🔽 Матчи -->
   <div id="matchesSection" style="display: none;">
     <div class="section-title">⚽ Матчи</div>
     <div id="matches">Здесь будут отображены все матчи</div>
   </div>
 
-  <!-- 🔽 Результаты -->
-  <div id="resultsSection" style="display: none;">
-    <div class="section-title">📅 Результаты туров</div>
-    <div id="results">Здесь появятся результаты</div>
+  <!-- 🔽 Бомбардиры -->
+  <div id="scorersSection" style="display: none;">
+    <div class="section-title">🎯 Бомбардиры турнира</div>
+    <div id="scorers">Загрузка...</div>
   </div>
 
-  <!-- 🔽 Следующий тур -->
-  <div id="nextSection" style="display: none;">
-    <div class="section-title">🔜 Следующий тур</div>
-    <div id="next-matches">Информация скоро будет добавлена</div>
+  <!-- 🔽 Новости -->
+  <div id="newsSection" style="display: none;">
+    <div class="section-title">📰 Новости</div>
+    <div id="news">Здесь будут появляться свежие новости</div>
   </div>
 
   <!-- 🔽 Скрипт переключения вкладок -->
@@ -85,10 +123,9 @@
     function showSection(id) {
       const sections = [
         'tableSection',
-        'scorersSection',
         'matchesSection',
-        'resultsSection',
-        'nextSection'
+        'scorersSection',
+        'newsSection'
       ];
       sections.forEach(sec => {
         document.getElementById(sec).style.display = (sec === id) ? 'block' : 'none';
@@ -142,5 +179,14 @@
       document.getElementById("scorers").innerHTML = html;
     });
   </script>
+
+  <!-- 🔽 Футер с Месси и Роналду -->
+  <footer>
+    <h3>Легенды футбола</h3>
+    <div class="legend-images">
+      <img src="messi.jpg" alt="Месси">
+      <img src="ronaldo.jpg" alt="Роналду">
+    </div>
+  </footer>
 </body>
 </html>
