@@ -1,73 +1,118 @@
-body {
+/* Шрифт и сброс */
+* {
   margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  background: linear-gradient(to bottom, #000428, #004e92);
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #001a3f, #000);
   color: white;
+  line-height: 1.6;
+  padding-bottom: 60px;
 }
 
+/* Верх */
 header {
-  background: #000;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.logo {
-  font-size: 20px;
-  color: #00c0ff;
-  font-weight: bold;
-}
-
-nav a {
-  margin-left: 15px;
-  text-decoration: none;
-  color: #ccc;
-  font-size: 14px;
-  transition: 0.3s;
-}
-nav a:hover {
-  color: #00c0ff;
-}
-
-h1.glow-text {
-  text-align: center;
-  color: #00c0ff;
-  margin: 30px 0 10px;
-  font-size: 24px;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 0 10px;
-  gap: 15px;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px;
+  background: #002366;
   padding: 15px;
-  width: 90%;
-  max-width: 350px;
-  box-shadow: 0 0 10px rgba(0, 192, 255, 0.2);
+  text-align: center;
+  border-bottom: 2px solid #0af;
+}
+
+header h1 {
+  font-size: 22px;
+  color: #00cfff;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: #0044cc;
+  padding: 8px 12px;
+  border-radius: 6px;
   transition: 0.3s;
 }
 
-.card:hover {
-  box-shadow: 0 0 20px rgba(0, 192, 255, 0.4);
+nav ul a:hover {
+  background-color: #0066ff;
+}
+
+/* Карточки */
+.card {
+  margin: 20px;
+  background: #012f5d;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #003;
+}
+
+.card h2 {
+  color: #0ff;
+  margin-bottom: 10px;
+}
+
+/* Таблица */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  color: #fff;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #004;
+}
+
+th {
+  background-color: #004f99;
+}
+
+/* Матчи */
+.match-card {
+  background: #013766;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.match-card span {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Новости */
+.news-card {
+  background: #022e5c;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-left: 4px solid #0ff;
+  border-radius: 6px;
 }
 
 footer {
-  margin-top: 40px;
-  padding: 20px;
   text-align: center;
-  background: #000;
-  color: #999;
-  font-size: 12px;
+  padding: 15px;
+  background: #000f30;
+  font-size: 14px;
+  color: #ccc;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
