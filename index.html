@@ -90,9 +90,47 @@
         transform: translateY(0);
       }
     }
+
+    /* Бургер-меню */
+    .burger {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 260px;
+      height: 100%;
+      background-color: #111c3d;
+      color: white;
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .side-menu.open {
+      left: 0;
+    }
   </style>
 </head>
 <body>
+
+  <!-- ☰ Бургер -->
+  <div class="burger" onclick="toggleMenu()">☰</div>
+
+  <!-- Меню "О нас" -->
+  <div id="sideMenu" class="side-menu">
+    <a href="#" onclick="closeMenu()" style="font-size:20px; float:right;">✖</a>
+    <h2 style="margin-top:40px;">О нас</h2>
+    <p>Это сайт Pro League по eFootball 🎮, созданный легендой @Homidov10 — фанатом Барселоны и Месси! 💙❤️</p>
+  </div>
 
   <h1>Чемпионат eFootball Pro League</h1>
 
@@ -143,7 +181,7 @@
     </div>
   </div>
 
-  <!-- 🔽 Скрипт переключения -->
+  <!-- 🔽 Скрипт -->
   <script>
     function showSection(id) {
       const sections = [
@@ -162,6 +200,15 @@
           el.classList.remove("fade-in");
         }
       });
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('open');
+    }
+
+    function closeMenu() {
+      document.getElementById('sideMenu').classList.remove('open');
     }
   </script>
 
@@ -213,4 +260,5 @@
   </script>
 </body>
 </html>
+
 
