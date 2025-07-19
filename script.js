@@ -1,4 +1,4 @@
-
+<script>
 let scorerList = [
   { name: "Месси", team: "Барселона", goals: 5 },
   { name: "Мбаппе", team: "ПСЖ", goals: 3 },
@@ -63,6 +63,29 @@ function saveTable() {
   alert("Таблица сохранена!");
 }
 
+function toggleBurgerMenu() {
+  const menu = document.getElementById('burgerMenu');
+  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+}
+
+// Переключение вкладок
+function showSection(id) {
+  const sections = [
+    'tableSection',
+    'scorersSection',
+    'matchesSection',
+    'newsSection',
+    'aboutSection'
+  ];
+  sections.forEach(section => {
+    const el = document.getElementById(section);
+    if (el) el.style.display = (section === id) ? 'block' : 'none';
+  });
+  // Скрываем бургер-меню после выбора
+  const menu = document.getElementById('burgerMenu');
+  if (menu) menu.style.display = 'none';
+}
+
 window.onload = function () {
   const savedTable = localStorage.getItem('leagueData');
   if (savedTable) {
@@ -70,3 +93,4 @@ window.onload = function () {
   }
   loadScorers();
 };
+</script>
