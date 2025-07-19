@@ -36,9 +36,11 @@
       color: white;
       cursor: pointer;
       font-size: 14px;
+      transition: background 0.3s, transform 0.3s;
     }
     button:hover {
       background-color: #002e99;
+      transform: translateY(-3px);
     }
     table {
       width: 95%;
@@ -68,6 +70,26 @@
       background: #06245e;
       border-radius: 8px;
     }
+
+    /* АНИМАЦИИ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    tr.fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 <body>
@@ -83,7 +105,7 @@
   </div>
 
   <!-- 🔽 Таблица -->
-  <div id="tableSection">
+  <div id="tableSection" class="fade-in">
     <table>
       <thead>
         <tr>
@@ -102,19 +124,19 @@
   </div>
 
   <!-- 🔽 Бомбардиры -->
-  <div id="scorersSection" style="display: none;">
+  <div id="scorersSection" style="display: none;" class="fade-in">
     <div class="section-title">🎯 Бомбардиры турнира</div>
     <div class="section-content" id="scorers">Загрузка...</div>
   </div>
 
   <!-- 🔽 Матчи -->
-  <div id="matchesSection" style="display: none;">
+  <div id="matchesSection" style="display: none;" class="fade-in">
     <div class="section-title">⚽ Матчи</div>
     <div class="section-content" id="matches">Здесь будут отображены все матчи</div>
   </div>
 
   <!-- 🔽 Новости -->
-  <div id="newsSection" style="display: none;">
+  <div id="newsSection" style="display: none;" class="fade-in">
     <div class="section-title">📰 Новости</div>
     <div class="section-content">
       🔥 Новый тур стартует скоро! Следите за результатами.
@@ -131,7 +153,14 @@
         'newsSection'
       ];
       sections.forEach(sec => {
-        document.getElementById(sec).style.display = (sec === id) ? 'block' : 'none';
+        const el = document.getElementById(sec);
+        if (sec === id) {
+          el.style.display = 'block';
+          el.classList.add("fade-in");
+        } else {
+          el.style.display = 'none';
+          el.classList.remove("fade-in");
+        }
       });
     }
   </script>
@@ -159,7 +188,7 @@
       let html = "";
       snapshot.forEach((doc) => {
         const team = doc.data();
-        html += `<tr>
+        html += `<tr class="fade-in">
           <td>${team.name}</td>
           <td>${team.played}</td>
           <td>${team.wins}</td>
