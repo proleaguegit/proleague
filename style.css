@@ -26,6 +26,7 @@ header h1 {
   color: #00cfff;
 }
 
+/* Меню */
 nav ul {
   display: flex;
   justify-content: space-around;
@@ -52,6 +53,25 @@ nav ul a:hover {
   background-color: #0066ff;
 }
 
+/* Кнопки (если используются отдельно) */
+button {
+  margin: 6px;
+  padding: 10px 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  background-color: #0044cc;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
 /* Карточки */
 .card {
   margin: 20px;
@@ -59,11 +79,17 @@ nav ul a:hover {
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 0 10px #003;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card h2 {
   color: #0ff;
   margin-bottom: 10px;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px #0088ff;
 }
 
 /* Таблица */
@@ -84,17 +110,30 @@ th {
   background-color: #004f99;
 }
 
+/* Анимация строк таблицы */
+tr.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.5s ease forwards;
+}
+
 /* Матчи */
 .match-card {
   background: #013766;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 6px;
+  transition: background 0.3s, transform 0.3s;
 }
 
 .match-card span {
   font-size: 12px;
   color: #aaa;
+}
+
+.match-card:hover {
+  background: #014b91;
+  transform: scale(1.02);
 }
 
 /* Новости */
@@ -104,8 +143,14 @@ th {
   padding: 10px;
   border-left: 4px solid #0ff;
   border-radius: 6px;
+  transition: transform 0.3s;
 }
 
+.news-card:hover {
+  transform: scale(1.01);
+}
+
+/* Footer */
 footer {
   text-align: center;
   padding: 15px;
@@ -115,4 +160,18 @@ footer {
   position: relative;
   bottom: 0;
   width: 100%;
+}
+
+/* Анимация появления секций */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
