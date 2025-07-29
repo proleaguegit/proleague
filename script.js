@@ -5,6 +5,7 @@ let scorerList = [
   { name: "Винисиус", team: "Реал", goals: 2 }
 ];
 
+// Рендерим бомбардиров
 function renderScorers() {
   const container = document.getElementById('scorers');
   container.innerHTML = '';
@@ -68,19 +69,20 @@ function toggleBurgerMenu() {
   menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 }
 
-// Переключение вкладок
+// ✅ Переключение вкладок с добавлением "О нас"
 function showSection(id) {
   const sections = [
     'tableSection',
     'scorersSection',
     'matchesSection',
     'newsSection',
-    'aboutSection'
+    'aboutSection' // Новый раздел
   ];
   sections.forEach(section => {
     const el = document.getElementById(section);
     if (el) el.style.display = (section === id) ? 'block' : 'none';
   });
+
   // Скрываем бургер-меню после выбора
   const menu = document.getElementById('burgerMenu');
   if (menu) menu.style.display = 'none';
