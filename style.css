@@ -220,3 +220,23 @@ footer {
   font-size: 14px;
   line-height: 1.4;
 }
+
+/* ---- Добавленный стиль для раздела "О нас" ---- */
+#aboutSection {
+  text-align: center;
+  background: #012f5d;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  color: #fff;
+}
+
+#aboutSection h2 {
+  color: #00cfff;
+  margin-bottom: 10px;
+}
+
+#aboutSection p {
+  font-size: 16px;
+  line-height: 1.6;
+}
